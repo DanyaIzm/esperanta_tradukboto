@@ -9,7 +9,7 @@ from scrapper import Searcher
 router = Router()
 
 
-@router.message(Command("f"))
+@router.message(Command("f"), flags={"throttling_key": "default"})
 async def command_f_handler(
     message: Message, command: CommandObject, session: ClientSession
 ):

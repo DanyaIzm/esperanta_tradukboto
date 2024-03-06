@@ -8,6 +8,7 @@ from aiogram.enums import ParseMode
 from aiogram.types import ErrorEvent
 from aiogram.utils.markdown import hcode
 from dotenv import load_dotenv
+from middlewares.trottling import ThrottlingMiddleware
 
 from routers import register_all_routers
 
@@ -42,6 +43,7 @@ async def main() -> None:
     register_all_routers(dp)
 
     dp.error()(get_error_handler(os.getenv("ADMIN_ID")))
+    dp.message.middleware(ThrottlingMiddleware(int(os.getenv("THROTTLE_TIME"))))
 
     token = os.getenv("BOT_TOKEN")
     bot = Bot(token, parse_mode=ParseMode.HTML)

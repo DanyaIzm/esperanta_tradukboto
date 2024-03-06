@@ -9,7 +9,7 @@ from aiogram.exceptions import TelegramEntityTooLarge, TelegramBadRequest
 router = Router()
 
 
-@router.message()
+@router.message(flags={"throttling_key": "default"})
 async def command_f_handler(message: Message, session: ClientSession):
     try:
         dictionary = Dictionary(session)
