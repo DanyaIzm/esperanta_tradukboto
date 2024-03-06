@@ -5,6 +5,8 @@ from exceptions import AnswerTooLargeException
 from scrapper import Dictionary
 from aiogram.exceptions import TelegramEntityTooLarge, TelegramBadRequest
 
+from scrapper.dictionary import WordNotFoundException
+
 
 router = Router()
 
@@ -54,6 +56,10 @@ async def command_f_handler(message: Message, session: ClientSession):
                 await message.answer(text=part)
         else:
             await message.answer(text=result_html)
+    except WordNotFoundException:
+        error_text = f"Trovis nenion al via demando"
+
+        await message.answer(text=error_text)
     except (TelegramEntityTooLarge, AnswerTooLargeException, TelegramBadRequest):
         error_text = f"Ŝajnas ke la mesaĝo estas tro granda. Bonvolu sendi vorto kun pli da literojn ol kiom vi sendis jam."
 

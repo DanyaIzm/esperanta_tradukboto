@@ -21,7 +21,12 @@ class Dictionary:
             resp_text = await resp.text()
 
         bs = BeautifulSoup(resp_text)
-        tag = bs.find("div", {"class": "search_result"}).find("div")
+        search_result = bs.find("div", {"class": "search_result"})
+
+        if not search_result:
+            raise WordNotFoundException("Ne estas resulto")
+
+        tag = search_result.find("div")
 
         divs = tag.find_all("div")
 
