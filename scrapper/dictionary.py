@@ -36,7 +36,7 @@ class Dictionary:
         result = (
             str("".join(str(t) for t in tag.contents))
             .replace("<br>", "\n")
-            .replace("<br/>", "\n")
+            .replace("<br/>", "")
             .replace("</br>", "")
         )
 
