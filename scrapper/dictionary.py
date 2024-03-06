@@ -24,7 +24,7 @@ class Dictionary:
         search_result = bs.find("div", {"class": "search_result"})
 
         if not search_result:
-            raise WordNotFoundException("Ne estas resulto")
+            raise WordNotFoundException("Ne estas rezulto")
 
         tag = search_result.find("div")
 
