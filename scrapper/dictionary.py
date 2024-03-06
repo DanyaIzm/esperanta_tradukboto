@@ -17,6 +17,8 @@ class Dictionary:
         return html
 
     async def _get_html(self, word: str) -> str:
+        word = "+".join(word.split(" "))
+
         async with self._session.get(BASE_URL + word) as resp:
             resp_text = await resp.text()
 
