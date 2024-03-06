@@ -1,3 +1,4 @@
+from ast import Dict, List
 from typing import Any
 from aiohttp.client import ClientSession
 from scrapper.search_result import SearchResult
@@ -18,5 +19,5 @@ class Searcher:
 
             return self.decode_results(json_result)
 
-    def decode_results(self, data: list[dict[str, Any]]) -> list[SearchResult]:
+    def decode_results(self, data: List[Dict[str, Any]]) -> List[SearchResult]:
         return [SearchResult(**e) for e in data]
