@@ -1,5 +1,4 @@
-from ast import Dict, List
-from typing import Any
+from typing import Dict, List, Any
 from aiohttp.client import ClientSession
 from scrapper.search_result import SearchResult
 
